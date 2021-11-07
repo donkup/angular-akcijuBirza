@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { NgForm } from '@angular/forms';
 import { Stock } from 'src/app/models/Stock';
+import { StockService } from 'src/app/services/stock.service';
 
 @Component({
   selector: 'app-add-stock',
@@ -9,7 +10,7 @@ import { Stock } from 'src/app/models/Stock';
 })
 export class AddStockComponent implements OnInit {
 
-  constructor() { }
+  constructor(private stockService: StockService) { }
 
   ngOnInit(): void {
   }
@@ -23,7 +24,13 @@ export class AddStockComponent implements OnInit {
       form.value.previousPrice, 
       form.value.exchange,
       form.value == 1 
-      )
+      );
+    
+      this.stockService.addStock(stock).subscribe((response)=> {
+        console.log(response);
+        
+      })
+    
   }
 
 }

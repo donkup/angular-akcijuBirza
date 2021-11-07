@@ -14,4 +14,8 @@ export class StockService {
   public getStocks(): Observable<Stock[]>{
     return this.httpClient.get<Stock[]>('http://localhost:3000/api/stock');
   }
+
+  public addStock(stock: Stock): Observable<any>{
+   return this.httpClient.post('http://localhost:3000/api/stock', stock)
+  }
 }
