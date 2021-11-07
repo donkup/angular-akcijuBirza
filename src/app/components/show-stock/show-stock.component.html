@@ -1,0 +1,14 @@
+<div *ngIf="stock!=undefined">
+    <form (ngSubmit)='submit()'>
+        <input type="text" name="name" ngModel required placeholder="Pavadinimas" [(ngModel)]="stock.name"> <br>
+        <input type="text" name="code" ngModel placeholder="Kodas" [(ngModel)]="stock.code" readonly> <br>
+        <input type="number" name="price" ngModel required placeholder="Kaina" [(ngModel)]="stock.price"> <br>
+        <input type="number" name="previousPrice" ngModel required placeholder="Buvusi kaina" [(ngModel)]="stock.previousPrice" readonly> <br>
+        <input type="text" name="exchange" ngModel required placeholder="Pakeitimas" [(ngModel)]="stock.exchange"> <br>
+        <select name="favorite" ngModel [(ngModel)]="stock.favorite">
+            <option value="false">ne</option>
+            <option value="true">Taip</option>
+        </select>
+        <button>Issaugoti</button>
+    </form>
+</div>
