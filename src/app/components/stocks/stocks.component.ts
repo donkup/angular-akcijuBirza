@@ -1,0 +1,23 @@
+import { Component, OnInit } from '@angular/core';
+import { Stock } from 'src/app/models/Stock';
+import { StockService } from 'src/app/services/stock.service';
+
+@Component({
+  selector: 'app-stocks',
+  templateUrl: './stocks.component.html',
+  styleUrls: ['./stocks.component.scss']
+})
+export class StocksComponent implements OnInit {
+
+  public stocks: Stock[]=[];
+
+  constructor(private stockService: StockService) { }
+
+  ngOnInit(): void {
+    this.stockService.getStocks().subscribe((response: Stock[])=>{
+      this.stocks= response;
+      
+    })
+  }
+
+}
